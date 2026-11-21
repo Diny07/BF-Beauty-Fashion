@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BF Beauty &amp; Fashion - Royal Bridal &amp; Jewelry</title>
+  <meta
+    name="description"
+    content="Royal Bridal & Jewelry Boutique — Sewa gaun pengantin eksklusif, perhiasan mutiara, dan reservasi fitting studio."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="marble-bg">
+  <div class="app-shell">
+    <!-- TOP NAVIGATION BAR (Mobile App Header + Desktop 3-Zone Nav) -->
+    <header class="top-header">
+      <div class="header-inner container">
+        <button type="button" class="brand-btn" data-nav="home">
+          <span class="brand-badge">
+            <img src="logo.png" alt="Logo BF Beauty &amp; Fashion" />
+          </span>
+          <span class="brand-title">BF Beauty &amp; Fashion</span>
+        </button>
+
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+          <button type="button" class="nav-link active" data-nav="home">Beranda</button>
+          <button type="button" class="nav-link" data-nav="catalog">Katalog</button>
+          <button type="button" class="nav-link" data-nav="fitting">Fitting</button>
+          <button type="button" class="nav-link" data-nav="cart">Keranjang</button>
+          <button type="button" class="nav-link" data-nav="profile">Profil</button>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            type="button"
+            id="btnNotif"
+            class="icon-btn"
+            aria-label="Notifikasi"
+          >
+            <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+            </svg>
+            <span id="notifDot" class="notif-dot"></span>
+          </button>
+
+          <button
+            type="button"
+            id="btnHeaderCart"
+            class="cart-pill-btn"
+            data-nav="cart"
+            aria-label="Buka keranjang sewa"
+          >
+            <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+              <path d="M3 6h18" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span id="headerCartCount" class="tabular-nums">2</span>
+          </button>
+
+          <!-- Dropdown Notifikasi -->
+          <div id="notifDropdown" class="notif-dropdown hidden" role="region" aria-label="Daftar notifikasi">
+            <div class="notif-header">
+              <span class="serif-title">Notifikasi Butik</span>
+              <button type="button" id="btnCloseNotif" class="close-mini-btn" aria-label="Tutup notifikasi">
+                &times;
+              </button>
+            </div>
+            <div id="notifList" class="notif-list"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SEARCH BAR (Aktif di halaman Beranda & Katalog) -->
+    <div id="searchSection" class="search-wrapper container">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" class="search-icon" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Cari gaun royal, tiara, perhiasan mutiara, atau jas..."
+          autocomplete="off"
+        />
+        <button
+          type="button"
+          id="btnClearSearch"
+          class="clear-search-btn hidden"
+          aria-label="Hapus pencarian"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT VIEWPORT -->
+    <div class="main-viewport container">
+      <!-- PAGE 1: BERANDA -->
+      <section id="pageHome" class="page-section active">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <div class="hero-meta">
+              <span>Royal Collection 2026</span>
+              <span aria-hidden="true">&middot;</span>
+              <span>Royal Bridal &amp; Jewelry Boutique</span>
+            </div>
+            <h1 class="hero-title">Gaun Pernikahan Royal Princess &amp; Fitting Studio</h1>
+            <p class="hero-desc">
+              Kemewahan gaun bersulam renda emas dengan sentuhan rose pink eksklusif dan sesi
+              fitting privat bersama stylist profesional kami.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn-mocha" data-nav="fitting">
+                Book Fitting Sekarang
+              </button>
+              <button type="button" class="btn-glass" data-nav="catalog">
+                Jelajahi Katalog
+              </button>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img
+              src="royal_pink_ballgown.jpg"
+              alt="Royal Princess Pink Ballgown"
+              class="hero-img"
+            />
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-head">
+            <h2 class="section-title">Koleksi Pilihan Butik</h2>
+            <button type="button" class="text-link-btn" data-nav="catalog">
+              Lihat Semua (<span id="totalProductCount">5</span>)
+            </button>
+          </div>
+
+          <div id="homeFilterTabs" class="filter-tabs">
+            <button type="button" class="filter-btn active" data-category="all">Semua</button>
+            <button type="button" class="filter-btn" data-category="gaun">Gaun Royal</button>
+            <button type="button" class="filter-btn" data-category="perhiasan">Mahkota &amp; Perhiasan</button>
+            <button type="button" class="filter-btn" data-category="pria">Jas Pengantin</button>
+          </div>
+
+          <div id="homeProductGrid" class="product-grid"></div>
+
+          <div id="homeEmptyState" class="empty-card hidden">
+            <h3>Koleksi tidak ditemukan</h3>
+            <p>Tidak ada koleksi yang cocok dengan kata kunci pencarian Anda.</p>
+            <button type="button" id="btnResetHomeFilter" class="btn-mocha">Reset Filter</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: KATALOG LENGKAP -->
+      <section id="pageCatalog" class="page-section hidden">
+        <div class="catalog-header">
+          <div>
+            <h1 class="page-title">Katalog Lengkap BF</h1>
+            <p id="catalogCountLabel" class="muted-text tabular-nums">5 dari 5 koleksi tersedia</p>
+          </div>
+          <div class="sort-control">
+            <label for="catalogSort">Urutkan:</label>
+            <select id="catalogSort">
+              <option value="popular">Rating Tertinggi</option>
+              <option value="price-asc">Harga Terendah</option>
+              <option value="price-desc">Harga Tertinggi</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="catalogFilterTabs" class="filter-tabs">
+          <button type="button" class="filter-btn active" data-category="all">Semua</button>
+          <button type="button" class="filter-btn" data-category="gaun">Gaun Royal</button>
+          <button type="button" class="filter-btn" data-category="perhiasan">Mahkota &amp; Perhiasan</button>
+          <button type="button" class="filter-btn" data-category="pria">Jas Pengantin</button>
+        </div>
+
+        <div id="catalogProductGrid" class="product-grid"></div>
+
+        <div id="catalogEmptyState" class="empty-card hidden">
+          <h3>Katalog tidak menemukan hasil</h3>
+          <p>Coba ubah filter kategori atau hapus kata kunci pencarian.</p>
+          <button type="button" id="btnResetCatalogFilter" class="btn-mocha">
+            Tampilkan Semua Koleksi
+          </button>
+        </div>
+      </section>
+
+      <!-- PAGE 3: FITTING & RESERVASI -->
+      <section id="pageFitting" class="page-section hidden">
+        <div class="section-head">
+          <div>
+            <h1 class="page-title">Jadwal Fitting Studio</h1>
+            <p class="muted-text">Kelola reservasi sesi fitting dan pantau progres busana Anda</p>
+          </div>
+          <button type="button" id="btnOpenStylistFromFitting" class="text-link-rose">
+            Tanya Stylist
+          </button>
+        </div>
+
+        <div id="bookingSelector" class="booking-selector hidden"></div>
+
+        <div class="fitting-grid">
+          <!-- Tracker Status Booking Aktif -->
+          <div id="fittingTrackerCard" class="surface-card space-y">
+            <div class="tracker-head">
+              <span id="trackerCode" class="tracker-code tabular-nums">#BF-9042</span>
+              <span id="trackerStatusLabel" class="tracker-status">Fitting Dikonfirmasi</span>
+            </div>
+
+            <div class="tracker-meta">
+              <p>Pemesan: <strong id="trackerCustomer">-</strong></p>
+              <p>Jadwal Fitting: <strong id="trackerSchedule" class="tabular-nums">-</strong></p>
+              <p>Koleksi: <strong id="trackerItems">-</strong></p>
+              <p id="trackerNotes" class="muted-small hidden"></p>
+            </div>
+
+            <div class="steps-wrapper">
+              <div class="steps-line"></div>
+              <div id="fittingSteps" class="steps-row"></div>
+            </div>
+            <div class="steps-labels">
+              <span>Booking</span>
+              <span>Fitting Studio</span>
+              <span>Penyesuaian</span>
+              <span>Hari-H</span>
+            </div>
+
+            <div class="tracker-footer">
+              <span id="trackerEventDate" class="muted-small tabular-nums">Hari-H: -</span>
+              <button type="button" id="btnAdvanceStep" class="text-link-btn">
+                Perbarui Tahap
+              </button>
+            </div>
+          </div>
+
+          <!-- Kalender & Pemilih Jam Fitting -->
+          <div class="surface-card space-y">
+            <div class="section-head">
+              <h2 class="card-title">Atur Tanggal &amp; Busana Fitting</h2>
+              <span class="rose-accent-label">Okt &ndash; Nov 2026</span>
+            </div>
+
+            <div class="form-group">
+              <label for="fittingDressSelect">Busana Utama yang Ingin Dicoba:</label>
+              <select id="fittingDressSelect" class="form-control"></select>
+            </div>
+
+            <div id="calendarGrid" class="calendar-grid"></div>
+
+            <div class="form-group">
+              <span class="field-label">Pilih Jam Kedatangan:</span>
+              <div id="timeSlotsGrid" class="time-slots-grid"></div>
+            </div>
+
+            <div class="selected-schedule-box">
+              <div>
+                <p class="muted-small">Jadwal Sesi Terpilih:</p>
+                <p id="selectedScheduleText" class="schedule-value tabular-nums">
+                  Minggu, 01 Nov 2026 (11:00 WIB)
+                </p>
+              </div>
+              <button type="button" id="btnSaveFitting" class="btn-mocha">
+                Simpan Jadwal
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 4: KERANJANG & CHECKOUT -->
+      <section id="pageCart" class="page-section hidden">
+        <div class="section-head">
+          <h1 class="page-title">Keranjang Sewa Saya</h1>
+          <span id="cartPageCount" class="muted-text tabular-nums">2 Item</span>
+        </div>
+
+        <div id="cartContentGrid" class="cart-grid">
+          <div id="cartItemsList" class="cart-items-list"></div>
+
+          <form id="checkoutForm" class="surface-card space-y">
+            <h2 class="card-title">Data Reservasi &amp; Ringkasan</h2>
+
+            <div class="form-group">
+              <label for="chkName">Nama Pemesan</label>
+              <input type="text" id="chkName" class="form-control" required />
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="chkPhone">No. WhatsApp</label>
+                <input type="tel" id="chkPhone" class="form-control tabular-nums" required />
+              </div>
+              <div class="form-group">
+                <label for="chkEventDate">Tanggal Acara</label>
+                <input type="date" id="chkEventDate" class="form-control tabular-nums" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="chkNotes">Catatan Ukuran / Acara (Opsional)</label>
+              <input
+                type="text"
+                id="chkNotes"
+                class="form-control"
+                placeholder="Misal: tinggi badan 165cm, pakai heels 8cm"
+              />
+            </div>
+
+            <div class="summary-breakdown">
+              <div class="summary-row">
+                <span>Subtotal Sewa:</span>
+                <strong id="cartSubtotal" class="tabular-nums">Rp 0</strong>
+              </div>
+              <div class="summary-row">
+                <span>Deposit Garansi (Refundable):</span>
+                <strong id="cartDeposit" class="tabular-nums">Rp 0</strong>
+              </div>
+              <div class="summary-total">
+                <span>Total Estimasi:</span>
+                <strong id="cartTotal" class="tabular-nums">Rp 0</strong>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-mocha btn-full">
+              Proses Reservasi Sekarang
+            </button>
+          </form>
+        </div>
+
+        <div id="cartEmptyState" class="empty-card hidden">
+          <h3>Keranjang Sewa Kosong</h3>
+          <p>Jelajahi gaun pengantin dan perhiasan royal untuk memulai reservasi Anda.</p>
+          <button type="button" class="btn-mocha" data-nav="catalog">Jelajahi Katalog</button>
+        </div>
+      </section>
+
+      <!-- PAGE 5: PROFIL AKUN -->
+      <section id="pageProfile" class="page-section hidden">
+        <div class="profile-container">
+          <div class="surface-card space-y">
+            <div class="profile-head">
+              <div class="profile-user">
+                <div id="profileAvatar" class="profile-avatar">AP</div>
+                <div>
+                  <h1 id="profileName" class="card-title">Vebi Fadilah Maharani</h1>
+                  <p id="profileMeta" class="muted-text">
+                    febifadilahmaharani@gmail.com &middot; Royal VIP Member
+                  </p>
+                </div>
+              </div>
+              <button type="button" id="btnToggleEditProfile" class="text-link-btn">
+                Ubah Profil
+              </button>
+            </div>
+
+            <form id="editProfileForm" class="edit-profile-form hidden">
+              <input type="text" id="editName" class="form-control" placeholder="Nama Lengkap" required />
+              <input type="email" id="editEmail" class="form-control" placeholder="Email" required />
+              <div class="form-inline-action">
+                <input type="tel" id="editPhone" class="form-control tabular-nums" placeholder="No. WhatsApp" required />
+                <button type="submit" class="btn-mocha">Simpan</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="surface-card menu-list">
+            <button type="button" class="menu-row" data-nav="fitting">
+              <span>Jadwal Fitting Saya (<span id="profileBookingCount">1</span>)</span>
+              <span class="chevron">&rsaquo;</span>
+            </button>
+            <button type="button" id="btnOpenStylistFromProfile" class="menu-row">
+              <span>Konsultasi Stylist Studio</span>
+              <span class="chevron">&rsaquo;</span>
+            </button>
+            <button type="button" id="btnResetDemo" class="menu-row muted-row">
+              <span>Pulihkan Data Awal Butik</span>
+              <span class="chevron">&rsaquo;</span>
+            </button>
+          </div>
+
+          <div class="surface-card space-y">
+            <div class="section-head">
+              <h2 class="card-title">Koleksi Favorit Tersimpan</h2>
+              <span id="profileFavCount" class="muted-text tabular-nums">0 item</span>
+            </div>
+            <div id="profileFavList" class="fav-list"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- DESKTOP FOOTER -->
+    <footer class="desktop-footer">
+      <div class="footer-inner container">
+        <span>BF Beauty &amp; Fashion &middot; Royal Bridal &amp; Jewelry Boutique</span>
+        <span>Jl. Kemang Raya No. 48, Jakarta Selatan &middot; Selasa&ndash;Minggu 10:00&ndash;19:00 WIB</span>
+      </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="mobile-bottom-nav" aria-label="Navigasi seluler">
+      <button type="button" class="bottom-nav-btn active" data-nav="home">
+        <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        <span>Beranda</span>
+      </button>
+
+      <button type="button" class="bottom-nav-btn" data-nav="catalog">
+        <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="7" height="7" x="3" y="3" rx="1" />
+          <rect width="7" height="7" x="14" y="3" rx="1" />
+          <rect width="7" height="7" x="14" y="14" rx="1" />
+          <rect width="7" height="7" x="3" y="14" rx="1" />
+        </svg>
+        <span>Katalog</span>
+      </button>
+
+      <button type="button" class="bottom-nav-btn" data-nav="fitting">
+        <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+          <line x1="16" x2="16" y1="2" y2="6" />
+          <line x1="8" x2="8" y1="2" y2="6" />
+          <line x1="3" x2="21" y1="10" y2="10" />
+          <path d="m9 16 2 2 4-4" />
+        </svg>
+        <span>Fitting</span>
+      </button>
+
+      <button type="button" class="bottom-nav-btn" data-nav="cart">
+        <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+          <path d="M3 6h18" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span>Keranjang</span>
+        <span id="mobileCartBadge" class="mobile-badge tabular-nums">2</span>
+      </button>
+
+      <button type="button" class="bottom-nav-btn" data-nav="profile">
+        <svg viewBox="0 0 24 24" class="icon-svg" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span>Profil</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MODAL DETAIL PRODUK -->
+  <div id="productModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <button type="button" id="btnCloseProductModal" class="modal-close-btn" aria-label="Tutup detail">
+        &times;
+      </button>
+
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="" />
+        <button type="button" id="btnModalFav" class="fav-circle-btn" aria-label="Simpan favorit">
+          &#9829;
+        </button>
+      </div>
+
+      <div class="modal-meta-row">
+        <span id="modalCategory" class="rose-accent-label">Gaun Royal</span>
+        <span class="tabular-nums">
+          &#9733; <strong id="modalRating">4.9</strong> &middot;
+          <span id="modalDuration">Sewa 7 Hari</span>
+        </span>
+      </div>
+
+      <h3 id="modalTitle" class="modal-title">Royal Princess Pink Ballgown</h3>
+      <p id="modalPrice" class="modal-price tabular-nums">Rp 15.000.000 / minggu</p>
+      <p id="modalDesc" class="modal-desc"></p>
+
+      <div class="form-group">
+        <span class="field-label">Pilih Ukuran:</span>
+        <div id="modalSizesGrid" class="size-options"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="modalRentalDate">Pilih Tanggal Fitting / Sewa:</label>
+        <input type="date" id="modalRentalDate" class="form-control tabular-nums" value="2026-11-01" min="2026-10-30" />
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="btnModalAddToCart" class="btn-outline">+ Keranjang</button>
+        <button type="button" id="btnModalBookFitting" class="btn-mocha">Book Fitting</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET KONSULTASI STYLIST STUDIO -->
+  <div id="stylistModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="stylistTitle">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <button type="button" id="btnCloseStylistModal" class="modal-close-btn" aria-label="Tutup konsultasi">
+        &times;
+      </button>
+
+      <h3 id="stylistTitle" class="modal-title">Konsultasi Stylist Studio</h3>
+      <p class="muted-text">
+        Diskusikan penyesuaian gaun, padu padan tiara, atau jadwal kunjungan privat Anda.
+      </p>
+
+      <div class="studio-info-box">
+        <p>Butik BF Royal Bridal &middot; Jl. Kemang Raya No. 48, Jakarta Selatan</p>
+        <p>Selasa &ndash; Minggu &middot; 10:00 &ndash; 19:00 WIB (Dengan Reservasi)</p>
+      </div>
+
+      <form id="stylistForm" class="space-y">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="stylistName">Nama</label>
+            <input type="text" id="stylistName" class="form-control" readonly />
+          </div>
+          <div class="form-group">
+            <label for="stylistPhone">WhatsApp</label>
+            <input type="text" id="stylistPhone" class="form-control tabular-nums" readonly />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="stylistTopic">Topik Konsultasi</label>
+          <select id="stylistTopic" class="form-control">
+            <option>Konsultasi Ukuran &amp; Fitting Gaun</option>
+            <option>Padu Padan Tiara &amp; Perhiasan</option>
+            <option>Paket Couple (Gaun + Jas Pengantin)</option>
+            <option>Perubahan Jadwal Fitting</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="stylistMessage">Pesan untuk Stylist</label>
+          <textarea
+            id="stylistMessage"
+            rows="3"
+            class="form-control"
+            required
+            placeholder="Contoh: Saya ingin mencoba Royal Princess Ballgown ukuran M dengan tambahan veil panjang..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-mocha btn-full">Kirim Permintaan Konsultasi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">
+    <span id="toastText">Notifikasi</span>
+  </div>
+
+  <!-- SCRIPTS TERPISAH -->
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
